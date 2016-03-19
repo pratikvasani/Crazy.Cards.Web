@@ -196,6 +196,7 @@
   <ItemGroup>
     <Content Include="Angular\Module\crazyCards.js" />
     <Content Include="Angular\Views\About.html" />
+    <Content Include="Angular\Views\Cards.html" />
     <Content Include="Angular\Views\Contact.html" />
     <Content Include="Angular\Views\Home.html" />
     <Content Include="Angular\Views\portfolio.html" />

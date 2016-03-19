@@ -86,7 +86,7 @@ header {
 }
 
 header .container {
-    padding-top: 100px;
+    padding-top: 120px;
     padding-bottom: 50px;
 }
 
@@ -171,7 +171,7 @@ header .intro-text .skills {
 }
 
 section {
-    padding: 100px 0;
+    padding: 110px 0;
 }
 
 section h2 {
@@ -286,6 +286,7 @@ section.success a.active {
 }
 
 .floating-label-form-group input,
+.floating-label-form-group .input-group-addon,
 .floating-label-form-group textarea {
     z-index: 1;
     position: relative;

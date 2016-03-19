@@ -1,7 +1,4 @@
-﻿@{
-    Layout = null;
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -55,6 +52,9 @@
                     <li class="page-scroll">
                         <a ui-sref="Contact">Contact</a>
                     </li>
+                    <li class="page-scroll">
+                        <a ui-sref="Cards">Cards</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -62,7 +62,7 @@
         <!-- /.container-fluid -->
     </nav>
     <!-- Header -->
-    <div ui-view>
+    <div ui-view autoscroll="false">
         @RenderBody()
     </div>
 
