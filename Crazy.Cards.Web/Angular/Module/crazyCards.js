@@ -28,19 +28,32 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('Cards', {
             url: "/Cards",
             templateUrl: "/Angular/Views/Cards.html",
-            controller: function ($scope, getOffersService) {
+            controller: function ($scope, $state, getOffersService) {
+                $scope.editMode = true;
                 $scope.customer = getOffersService.customer;
-                $scope.GetOffers = function () {
+                $scope.getOffers = function (customerForm) {
                     // check if form is valid before getting offers.
-
+                    //"Cards.MyOffers"
+                    angular.forEach(customerForm.$error.required, function (field) {
+                        field.$setDirty();
+                    });
+                    if (customerForm.$valid) {
+                        //Do something
+                        $state.go("Cards.MyOffers");
+                    }
                 }
+                $scope.employmentOptions = [{ Value: 1, Text: "Unemployed" }, { Value: 2, Text: "Student" }, { Value: 3, Text: "Part time" }, { Value: 4, Text: "Full time" }];
+                
+                //<option value="1">Unemployed</option>
+                //                    <option value="2">Student</option>
+                //                    <option value="3">Part time</option>
+                //                    <option value="4">Full time</option>
             }
         })
      .state('Cards.MyOffers', {
          url: "/MyOffers",
          templateUrl: "/Angular/Views/MyOffers.html",
          controller: function ($scope) {
-
          },
        
      })
@@ -99,7 +112,7 @@ app.filter('ageFilter', function () {
 
 app.service('getOffersService', [function () {
     this.customer = {};
-    this.setCustomer = function(customer) {
+    this.getOffers = function(customer) {
 
     }
 }]);
