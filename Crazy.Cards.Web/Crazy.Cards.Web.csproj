@@ -196,9 +196,11 @@
   <ItemGroup>
     <Content Include="Angular\Module\crazyCards.js" />
     <Content Include="Angular\Views\About.html" />
+    <Content Include="Angular\Views\AboutMe.html" />
     <Content Include="Angular\Views\Cards.html" />
     <Content Include="Angular\Views\Contact.html" />
     <Content Include="Angular\Views\Home.html" />
+    <Content Include="Angular\Views\MyOffers.html" />
     <Content Include="Angular\Views\portfolio.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />

@@ -5,7 +5,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
     .state('Home', {
         url: "/Home",
-        templateUrl: "/Angular/Views/Home.html"
+        templateUrl: "/Angular/Views/Home.html",
+        controller: function ($scope) {
+            $scope.start = function () {
+                $scope.firstName = "";
+                $scope.showError = true;
+            }
+        }
     })
     .state('About', {
         url: "/About",
@@ -22,27 +28,22 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('Cards', {
             url: "/Cards",
             templateUrl: "/Angular/Views/Cards.html",
-            controller: function ($scope) {
-                //$scope.$watch('customer.DOB', function () {
-                //    if ($scope.customer != null) {
-                //        if ($scope.customer.DOB != null) {
-                //            $scope.calculateAge($scope.customer.DOB)
-                //        }
-                //    }
-                 
-                //});
+            controller: function ($scope, getOffersService) {
+                $scope.customer = getOffersService.customer;
+                $scope.GetOffers = function () {
+                    // check if form is valid before getting offers.
 
-                //$scope.calculateAge = function calculateAge(birthday) { // birthday is a date
-                //    if (isNaN(birthday.getTime())) {  // d.valueOf() could also work
-                //        // date is not valid
-                //        return "";
-                //    }
-                //    var ageDifMs = Date.now() - birthday.getTime();
-                //    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-                //    return Math.abs(ageDate.getUTCFullYear() - 1970);
-                //}
+                }
             }
         })
+     .state('Cards.MyOffers', {
+         url: "/MyOffers",
+         templateUrl: "/Angular/Views/MyOffers.html",
+         controller: function ($scope) {
+
+         },
+       
+     })
     ;
 });
 app.run(function ($rootScope) {
@@ -95,3 +96,10 @@ app.filter('ageFilter', function () {
         return age;
     };
 });
+
+app.service('getOffersService', [function () {
+    this.customer = {};
+    this.setCustomer = function(customer) {
+
+    }
+}]);
