@@ -43,19 +43,36 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
                 $scope.employmentOptions = [{ Value: 1, Text: "Unemployed" }, { Value: 2, Text: "Student" }, { Value: 3, Text: "Part time" }, { Value: 4, Text: "Full time" }];
-                
-                //<option value="1">Unemployed</option>
-                //                    <option value="2">Student</option>
-                //                    <option value="3">Part time</option>
-                //                    <option value="4">Full time</option>
+
             }
         })
      .state('Cards.MyOffers', {
          url: "/MyOffers",
          templateUrl: "/Angular/Views/MyOffers.html",
-         controller: function ($scope) {
-         },
-       
+         controller: function ($scope, getOffersService, $filter) {
+
+
+
+             $scope.OfferSelected = function (offer) {
+                 $scope.SelectedRecords = $filter('filter')($scope.offers, {
+                     Selected: true
+                 });
+                 $scope.SelectedCount = $scope.SelectedRecords.length;
+                 $scope.TotalCreditLimit = 0;
+                 for (var i = 0; i < $scope.SelectedRecords.length; i++) {
+                     var product = $scope.SelectedRecords[i];
+                      $scope.TotalCreditLimit += (product.CreditLimit);
+                 }
+                 
+             }
+
+             getOffersService.getOffers().then(function (result) {
+                 $scope.offers = result.data;
+             });
+
+
+         }
+
      })
     ;
 });
@@ -86,7 +103,7 @@ app.filter('ageFilter', function () {
     function calculateAge(birthday) { // birthday is a date
         var ageDifMs = Date.now() - new Date(birthday).getTime();
         var ageDate = new Date(ageDifMs); // miliseconds from epoch
-        return Math.abs(ageDate.getUTCFullYear() - 1970) ;
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
     function monthDiff(d1, d2) {
         if (d1 < d2) {
@@ -110,9 +127,12 @@ app.filter('ageFilter', function () {
     };
 });
 
-app.service('getOffersService', [function () {
+app.service('getOffersService', ['$http', function ($http) {
     this.customer = {};
-    this.getOffers = function(customer) {
+    this.offers = [];
+    this.getOffers = function () {
 
+        return $http.post('/api/Offers', this.customer);
     }
+
 }]);

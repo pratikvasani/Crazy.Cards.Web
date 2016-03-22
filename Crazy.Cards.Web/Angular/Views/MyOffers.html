@@ -1,19 +1,45 @@
 ﻿<div class="row">
     <div class="col-lg-12">
         <h3>Special offers for you </h3>
-        
+        <span>You selcted {{SelectedCount}} cards with total credit limit of {{TotalCreditLimit}}</span>
     </div>
 </div>
-<div class="row">
-    <div class="media">
-        <div class="media-left">
-            <a href="#">
-                <img class="media-object" src="/img/portfolio/cake.png" style="width:150px;" alt="...">
-            </a>
+<hr />
+<div class="row display-table bordered-div" ng-repeat="offer in offers track by $index">
+
+    <div class="col-lg-11 col-xs-12">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" ng-src="{{offer.CardImage}}" style="width:150px;" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <div class="row">
+                    <div class="col-lg-7 col-xs-12">
+                        <h4 class="media-heading">{{offer.CardName}}</h4>
+                        <small>{{offer.CardDescription}}</small>
+
+                    </div>
+                    <div class="col-lg-5 col-xs-12">
+                        <h4 class="text-success"><small>Credit limit</small> £ {{offer.CreditLimit}}</h4>
+
+                    </div>
+                </div>
+
+                <ul class="nav nav-pills" role="tablist">
+                    <li role="presentation" class="active pull-right"><a>APR {{offer.CardAPR}} %</a></li>
+                    <li role="presentation" class="active pull-right" ng-show="offer.BalanceTransferOfferDuration > 0"><a href="#">Balance transfer for {{offer.BalanceTransferOfferDuration}} months</a></li>
+                    <li role="presentation" class="active pull-right" ng-show="offer.PurchaseOfferDuration > 0"><a href="#">0% for {{offer.PurchaseOfferDuration}} months<span class="badge">3</span></a></li>
+                </ul>
+            </div>
         </div>
-        <div class="media-body">
-            <h4 class="media-heading">Anywhere Card</h4>
-            <small>Small description of card.</small>
-        </div>
+        <hr />
     </div>
+    <div class="col-lg-1  col-xs-12 display-cell ">
+        <input type="checkbox" class="form-control clearfix selecter-checkbox" ng-model="offer.Selected" ng-click="OfferSelected(offer)" />
+
+    </div>
+
 </div>
+

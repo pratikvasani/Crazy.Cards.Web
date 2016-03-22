@@ -2,7 +2,7 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8" ui-view>
+            <div class="col-lg-8 col-xs-12" ui-view>
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>Tell us about yourself</h3>
@@ -12,41 +12,40 @@
                 </div>
                 <div class="row">
                     <form name="customerForm" id="contactForm" novalidate>
-                        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                        <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                         <div class="row"></div>
                         <div class="row control-group">
 
 
-                            <div class="form-group col-xs-2">
+                            <div class="form-group col-lg-2 col-xs-12">
                                 <label for="title" class="control-label">Title</label>
-                                <select style="z-index:1" class="form-control" ng-model="customer.Title" placeholder="Title" name="title" id="title" required data-validation-required-message="Please enter your Title.">
-                                    <option>Mr</option>
-                                    <option>Miss</option>
-                                    <option>Mrs</option>
+                                <select class="form-control" ng-model="customer.Title" placeholder="Title" name="title" id="title" required data-validation-required-message="Please enter your Title.">
+                                    <option value="1">Mr</option>
+                                    <option value="2">Miss</option>
+                                    <option value="3">Mrs</option>
+                                    <option value="4">Ms</option>
                                 </select>
                                 <small class="help-block text-danger" ng-show="customerForm.title.$valid == false && customerForm.title.$pristine== false">* Required</small>
                             </div>
-                            <div class="form-group col-xs-5">
+                            <div class="form-group col-lg-5 col-xs-12">
                                 <label for="firstName" class="control-label">First Name</label>
                                 <input type="text" class="form-control" ng-required="true" name="firstname" ng-model="customer.FirstName" placeholder="First Name" id="firstName">
                                 <small class="help-block text-danger" ng-show="customerForm.firstname.$valid == false && customerForm.firstname.$pristine== false">* Required</small>
                             </div>
-                            <div class="form-group col-xs-5">
+                            <div class="form-group col-lg-5 col-xs-12">
                                 <label for="lastName" class="control-label">Last Name</label>
-                                <input type="text" class="form-control" name="lastName" ng-model="customer.LastName" placeholder="Last Name" id="lastName" required >
+                                <input type="text" class="form-control" name="lastName" ng-model="customer.LastName" placeholder="Last Name" id="lastName" required>
                                 <small class="help-block text-danger" ng-show="customerForm.lastName.$valid == false && customerForm.lastName.$pristine== false">* Required</small>
                             </div>
                         </div>
                         <div class="row control-group">
-                            <div class="col-lg-5">
+                            <div class="col-lg-5  col-xs-12">
                                 <label class="control-label" for="dob">Date of birth</label>
-                                <input ng-model="customer.DOB" type="date" class="form-control" placeholder="Date of birth" id="dob" >
+                                <input ng-model="customer.DOB" type="date" class="form-control" placeholder="Date of birth" id="dob">
                             </div>
 
                         </div>
                         <div class="row control-group">
-                            <div class="form-group col-xs-5">
+                            <div class="form-group col-xs-5 col-xs-12">
                                 <label class="control-label" for="empStatus">Employment status</label>
                                 <select class="form-control" id="empStatus" ng-model="customer.EmploymentStatus" ng-options="op as op.Text for op in employmentOptions"></select>
                                 <p class="help-block text-danger"></p>
@@ -56,7 +55,7 @@
                         </div>
                         <div class="row control-group" ng-show="customer.EmploymentStatus.Value > 2 ">
 
-                            <div class="form-group col-xs-5">
+                            <div class="form-group col-xs-5 col-xs-12">
                                 <label for="annIncome" class="control-label">Annual Income</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">£</span>
@@ -67,20 +66,20 @@
                         <fieldset>
                             <legend>Address</legend>
                             <div class="row control-group">
-                                <div class="form-group col-xs-4">
+                                <div class="form-group col-lg-4 col-xs-12">
                                     <label class="control-label">House Number</label>
-                                    <input type="text" class="form-control" placeholder="House number">
+                                    <input type="text" class="form-control" ng-model="customer.HouseNumber" placeholder="House number">
                                     <p class="help-block text-danger"></p>
                                 </div>
-                                <div class="form-group col-xs-4">
+                                <div class="form-group col-lg-4 col-xs-12">
                                     <label class="control-label">Street</label>
-                                    <input type="text" class="form-control" placeholder="Street">
+                                    <input type="text" class="form-control" ng-model="customer.Street" placeholder="Street">
                                     <p class="help-block text-danger"></p>
 
                                 </div>
-                                <div class="form-group col-xs-4">
+                                <div class="form-group col-lg-4 col-xs-12">
                                     <label class="control-label">Post Code</label>
-                                    <input type="text" class="form-control" placeholder="Post code">
+                                    <input type="text" class="form-control" ng-model="customer.PostCode" placeholder="Post code">
                                     <p class="help-block text-danger"></p>
 
                                 </div>
@@ -98,7 +97,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 pull-right">
+            <div class="col-lg-4 col-xs-12 pull-right">
                 <div class="row">
 
                     <div class="col-lg-12">
@@ -111,6 +110,12 @@
                         <h5 ng-show="customer.EmploymentStatus != null " class="pull-right">{{ customer.EmploymentStatus.Text}}</h5>
                     </div>
                     <div class="col-lg-12">
+                        <h5 ng-show="customer.HouseNumber != null " class="pull-right">{{ customer.HouseNumber}} , {{customer.Street}}. {{customer.PostCode}}</h5>
+                    </div>
+                    <div class="col-xs-12" ng-show="SelectedCount > 0 && TotalCreditLimit > 0">
+                        Selected {{SelectedCount}} card with credit limit of{{TotalCreditLimit}}
+                    </div>
+                    <div class="col-lg-12">
                         <button class="btn btn-sm btn-default pull-right" ng-show="customer.FirstName.length > 0" ui-sref="Cards">Edit</button>
                     </div>
                 </div>
@@ -119,10 +124,3 @@
 
     </div>
 </section>
-<script>
-    function dateBlur(element) {
-        if (element.value.length == 0) {
-            element.type = 'text';
-        }
-    }
-</script>

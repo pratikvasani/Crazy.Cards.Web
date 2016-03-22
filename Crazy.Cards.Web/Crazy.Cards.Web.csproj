@@ -151,7 +151,6 @@
   <ItemGroup>
     <Folder Include="Angular\Controllers\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -187,21 +186,20 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\CardOffersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerViewModel.cs" />
+    <Compile Include="Models\OfferViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\Module\crazyCards.js" />
     <Content Include="Angular\Views\About.html" />
-    <Content Include="Angular\Views\AboutMe.html" />
     <Content Include="Angular\Views\Cards.html" />
-    <Content Include="Angular\Views\Contact.html" />
     <Content Include="Angular\Views\Home.html" />
     <Content Include="Angular\Views\MyOffers.html" />
-    <Content Include="Angular\Views\portfolio.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

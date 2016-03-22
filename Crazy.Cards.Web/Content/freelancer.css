@@ -467,3 +467,29 @@ footer {
     font-size:1.5em;
     border:0;
 }
+
+    .display-table {
+        display: table;
+        table-layout: fixed;
+    }
+
+    
+    .display-cell {
+        display: table-cell;
+        vertical-align: middle;
+        float: none;
+    }
+
+    .vcenter {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+    }
+
+    .nav-pills li {
+        margin: 3px;
+    }
+    .selecter-checkbox{
+        min-height:20px !important;
+        min-width:20px;
+    }
