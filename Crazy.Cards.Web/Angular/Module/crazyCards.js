@@ -28,8 +28,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('Cards', {
             url: "/Cards",
             templateUrl: "/Angular/Views/Cards.html",
-            controller: function ($scope, $state, getOffersService) {
+            controller: function ($scope, $state, getOffersService, $filter) {
                 $scope.editMode = true;
+                getOffersService.AddSelectedCard(0,0);
+
                 $scope.customer = getOffersService.customer;
                 $scope.getOffers = function (customerForm) {
                     // check if form is valid before getting offers.
@@ -43,15 +45,27 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
                 $scope.employmentOptions = [{ Value: 1, Text: "Unemployed" }, { Value: 2, Text: "Student" }, { Value: 3, Text: "Part time" }, { Value: 4, Text: "Full time" }];
+                $scope.titles = [{ Value: 1, Text: "Mr" }, { Value: 2, Text: "Mrs" }, { Value: 3, Text: "Miss" }, { Value: 4, Text: "Ms" }];
 
+                $scope.titleChanged = function (newTitleId) {
+                    $scope.titleDesc = $filter('filter')($scope.titles, {
+                        Value: newTitleId
+                    })[0].Text;
+                }
+                $scope.EmpStatusChanged = function (newStatus) {
+                    $scope.EmpStatusDescription = $filter('filter')($scope.employmentOptions, {
+                        Value: newStatus
+                    })[0].Text;
+                }
             }
         })
      .state('Cards.MyOffers', {
          url: "/MyOffers",
          templateUrl: "/Angular/Views/MyOffers.html",
          controller: function ($scope, getOffersService, $filter) {
-
-
+             $scope.SelectedCount = 0;
+             $scope.TotalCreditLimit = 0
+             getOffersService.AddSelectedCard($scope.SelectedCount, $scope.TotalCreditLimit);
 
              $scope.OfferSelected = function (offer) {
                  $scope.SelectedRecords = $filter('filter')($scope.offers, {
@@ -61,9 +75,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                  $scope.TotalCreditLimit = 0;
                  for (var i = 0; i < $scope.SelectedRecords.length; i++) {
                      var product = $scope.SelectedRecords[i];
-                      $scope.TotalCreditLimit += (product.CreditLimit);
+                     $scope.TotalCreditLimit += (product.CreditLimit);
                  }
-                 
+                 getOffersService.AddSelectedCard($scope.SelectedCount, $scope.TotalCreditLimit);
+
              }
 
              getOffersService.getOffers().then(function (result) {
@@ -133,6 +148,11 @@ app.service('getOffersService', ['$http', function ($http) {
     this.getOffers = function () {
 
         return $http.post('/api/Offers', this.customer);
+    }
+    this.AddSelectedCard = function (cards, totalCreditLimit) {
+        this.customer.SelectedCards = cards;
+        this.customer.TotalCreditLimit = totalCreditLimit;
+
     }
 
 }]);

@@ -18,12 +18,8 @@
 
                             <div class="form-group col-lg-2 col-xs-12">
                                 <label for="title" class="control-label">Title</label>
-                                <select class="form-control" ng-model="customer.Title" placeholder="Title" name="title" id="title" required data-validation-required-message="Please enter your Title.">
-                                    <option value="1">Mr</option>
-                                    <option value="2">Miss</option>
-                                    <option value="3">Mrs</option>
-                                    <option value="4">Ms</option>
-                                </select>
+
+                                <select class="form-control" ng-model="customer.Title" placeholder="Title" ng-change="titleChanged(customer.Title)" name="title" id="title" required data-validation-required-message="Please enter your Title." ng-change="EmpStatusChanged(customer.EmploymentStatus)" ng-options="op.Value as op.Text for op in titles"></select>
                                 <small class="help-block text-danger" ng-show="customerForm.title.$valid == false && customerForm.title.$pristine== false">* Required</small>
                             </div>
                             <div class="form-group col-lg-5 col-xs-12">
@@ -47,19 +43,19 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-5 col-xs-12">
                                 <label class="control-label" for="empStatus">Employment status</label>
-                                <select class="form-control" id="empStatus" ng-model="customer.EmploymentStatus" ng-options="op as op.Text for op in employmentOptions"></select>
+                                <select class="form-control" id="empStatus" ng-model="customer.EmploymentStatus" ng-change="EmpStatusChanged(customer.EmploymentStatus)" ng-options="op.Value as op.Text for op in employmentOptions"></select>
                                 <p class="help-block text-danger"></p>
                             </div>
 
 
                         </div>
-                        <div class="row control-group" ng-show="customer.EmploymentStatus.Value > 2 ">
+                        <div class="row control-group" ng-show="customer.EmploymentStatus >= 2 ">
 
                             <div class="form-group col-xs-5 col-xs-12">
                                 <label for="annIncome" class="control-label">Annual Income</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">£</span>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="number" ng-model="customer.AnnualIncome">
                                 </div>
                             </div>
                         </div>
@@ -101,23 +97,30 @@
                 <div class="row">
 
                     <div class="col-lg-12">
-                        <h3 class="pull-right">{{customer.Title}} {{customer.FirstName}} {{customer.LastName}}</h3>
+                        <h3 class="pull-right">{{titleDesc}} {{customer.FirstName}} {{customer.LastName}}</h3>
                     </div>
                     <div class="col-lg-12">
                         <h5 ng-show="customer.DOB.length > 0 " class="pull-right">Age : {{ customer.DOB | ageFilter }}</h5>
                     </div>
                     <div class="col-lg-12">
-                        <h5 ng-show="customer.EmploymentStatus != null " class="pull-right">{{ customer.EmploymentStatus.Text}}</h5>
+                        <h5 ng-show="customer.EmploymentStatus != null " class="pull-right">{{ EmpStatusDescription}}</h5>
                     </div>
                     <div class="col-lg-12">
                         <h5 ng-show="customer.HouseNumber != null " class="pull-right">{{ customer.HouseNumber}} , {{customer.Street}}. {{customer.PostCode}}</h5>
                     </div>
-                    <div class="col-xs-12" ng-show="SelectedCount > 0 && TotalCreditLimit > 0">
-                        Selected {{SelectedCount}} card with credit limit of{{TotalCreditLimit}}
-                    </div>
                     <div class="col-lg-12">
                         <button class="btn btn-sm btn-default pull-right" ng-show="customer.FirstName.length > 0" ui-sref="Cards">Edit</button>
                     </div>
+                    <div class="col-lg-12" ng-show="customer.SelectedCards > 0 && customer.TotalCreditLimit > 0">
+                        <h5 class="text-success pull-right"> You Selected {{customer.SelectedCards}} card </h5>
+                    </div>
+                    <div class="col-lg-12" ng-show="customer.SelectedCards > 0 && customer.TotalCreditLimit > 0">
+                        <h4 class="pull-right text-success"><small>Total credit limit</small> £ {{customer.TotalCreditLimit}}</h4>
+                    </div>
+                    <div class="col-lg-12" ng-show="customer.SelectedCards > 0 && customer.TotalCreditLimit > 0">
+                        <button class="btn btn-success pull-right">Apply Now</button>
+                    </div>
+
                 </div>
             </div>
         </div>
