@@ -256,7 +256,9 @@
     <Content Include="Content\less\variables.less" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="font-awesome\fonts\FontAwesome.otf" />
     <Content Include="font-awesome\less\bordered-pulled.less" />
     <Content Include="font-awesome\less\core.less" />
