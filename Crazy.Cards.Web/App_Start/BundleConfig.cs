@@ -21,12 +21,12 @@ namespace Crazy.Cards.Web
                       "~/Scripts/jquery.js", 
                       "~/Scripts/cbpAnimatedHeader.js",
                       "~/Scripts/freelancer.js",
-                      "~/Scripts/classie.js",
-                      "~/Scripts/angular.js",
-                      "~/Scripts/AngularUI/ui-router.min.js",
-                      "~/Angular/Module/crazyCards.js",
-                      "~/Angular/Controllers/cardsController.js",
-                      "~/Angular/Controllers/offersController.js" 
+                      "~/Scripts/classie.js" //,
+                      //"~/Scripts/angular.js",
+                      //"~/Scripts/AngularUI/ui-router.min.js",
+                      //"~/Angular/Module/crazyCards.js",
+                      //"~/Angular/Controllers/cardsController.js",
+                      //"~/Angular/Controllers/offersController.js" 
 
                       ));
 
