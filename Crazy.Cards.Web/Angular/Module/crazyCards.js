@@ -1,6 +1,6 @@
 ﻿var app = angular.module("crazyCards", ['ui.router']);
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/Home");
     $stateProvider
     .state('Home', {
@@ -29,7 +29,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
      })
     ;
-});
+}]);
 
 app.filter('ageFilter', function () {
     function calculateAge(birthday) { // birthday is a date
