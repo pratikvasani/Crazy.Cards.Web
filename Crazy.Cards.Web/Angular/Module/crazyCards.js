@@ -1,17 +1,17 @@
 ﻿var app = angular.module("crazyCards", ['ui.router']);
 
-app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
+app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/Home");
     $stateProvider
     .state('Home', {
         url: "/Home",
         templateUrl: "/Angular/Views/Home.html",
-        controller: function ($scope) {
+        controller: ["$scope", function ($scope) {
             $scope.start = function () {
                 $scope.firstName = "";
                 $scope.showError = true;
             }
-        }
+        }]
     })
     .state('About', {
         url: "/About",
@@ -73,8 +73,8 @@ app.service('getOffersService', ['$http', function ($http) {
     }
 
 }]);
-app.run(function ($rootScope) {
-$rootScope.$on('$stateChangeSuccess', function() {
-   document.body.scrollTop = document.documentElement.scrollTop = 0;
-});
-});
+app.run(["$rootScope", function ($rootScope) {
+    $rootScope.$on('$stateChangeSuccess', function () {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    });
+}]);

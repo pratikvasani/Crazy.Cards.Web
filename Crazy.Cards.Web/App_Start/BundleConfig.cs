@@ -35,6 +35,14 @@ namespace Crazy.Cards.Web
                       "~/Scripts/freelancer.js"
                       
                 ));
+            bundles.Add(new ScriptBundle("~/Scripts/Angular")
+                .Include(
+                "~/Angular/Module/crazyCards.js",
+                "~/Angular/Controllers/cardsController.js",
+                "~/Angular/Controllers/offersController.js"
+
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/freelancer.css",
