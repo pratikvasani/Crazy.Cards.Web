@@ -22,8 +22,7 @@ namespace Crazy.Cards.Web.Controllers
         [Route("api/Offers")]
         public IEnumerable<OfferViewModel> PostOffers(CustomerViewModel model)
         {
-            //var cardOffers =  repository.GetCards(model.EmploymentStatus, model.AnnualIncome);
-            var cardOffers = repository.GetCards(Core.Enumerations.EmploymentStatus.Student, 55555);
+            var cardOffers =  repository.GetCards(model.EmploymentStatus, model.AnnualIncome);
             return Map(cardOffers);
             
 
