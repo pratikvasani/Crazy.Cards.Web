@@ -4,41 +4,36 @@
     </div>
 </div>
 <hr />
-<div class="row display-table bordered-div" ng-repeat="offer in offers track by $index">
-
+<div class="row" ng-repeat="offer in offers track by $index">
     <div class="col-lg-11 col-xs-12">
-        <div class="media">
-            <div class="media-left">
+        <div class="row">
+            <div class="col-lg-4 col-xs-6">
                 <a href="#">
-                    <img class="media-object" ng-src="{{offer.CardImage}}" style="width:150px;" alt="...">
+                    <img class="media-object" ng-src="{{offer.CardImage}}" style="width:150px;" alt="{{offer.CardName}}">
                 </a>
             </div>
-            <div class="media-body">
-                <div class="row">
-                    <div class="col-lg-7 col-xs-12">
-                        <h4 class="media-heading">{{offer.CardName}}</h4>
-                        <small>{{offer.CardDescription}}</small>
-
-                    </div>
-                    <div class="col-lg-5 col-xs-12">
-                        <h4 class="text-success"><small>Credit limit</small> £ {{offer.CreditLimit}}</h4>
-
-                    </div>
-                </div>
-
+            <div class="col-lg-8 col-xs-6">
+                <h4 class="media-heading">{{offer.CardName}}</h4>
+                <small>{{offer.CardDescription}}</small>
+                <h4 class="text-success"><small>Credit limit</small> £ {{offer.CreditLimit}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
                 <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" class="active pull-right"><a>APR {{offer.CardAPR}} %</a></li>
-                    <li role="presentation" class="active pull-right" ng-show="offer.BalanceTransferOfferDuration > 0"><a href="#">Balance transfer for {{offer.BalanceTransferOfferDuration}} months</a></li>
-                    <li role="presentation" class="active pull-right" ng-show="offer.PurchaseOfferDuration > 0"><a href="#">0% for {{offer.PurchaseOfferDuration}} months</a></li>
+                    <li role="presentation" class="active "><a>APR {{offer.CardAPR}} %</a></li>
+                    <li role="presentation" class="active " ng-show="offer.BalanceTransferOfferDuration > 0"><a href="#">Balance transfer for {{offer.BalanceTransferOfferDuration}} months</a></li>
+                    <li role="presentation" class="active " ng-show="offer.PurchaseOfferDuration > 0"><a href="#">0% for {{offer.PurchaseOfferDuration}} months</a></li>
                 </ul>
             </div>
         </div>
-        <hr />
     </div>
-    <div class="col-lg-1  col-xs-12 display-cell ">
+    <div class="col-lg-1  col-xs-12 center-block text-center">
+        <label class="hidden-lg ">Select this card</label>
         <input type="checkbox" class="form-control clearfix selecter-checkbox" ng-model="offer.Selected" ng-click="OfferSelected(offer)" />
-
     </div>
-
+   <div class="col-lg-12 col-xs-12">
+       <hr />
+   </div>
 </div>
 

@@ -472,7 +472,17 @@ footer {
         display: table;
         table-layout: fixed;
     }
-
+    @media (max-width: 767px) {
+  .display-table {
+    display:inherit;
+    table-layout:auto;
+  }
+  .bordered-div{
+      border:solid;
+      border-width:1px;
+      border-radius:1px;
+  }
+}
     
     .display-cell {
         display: table-cell;
