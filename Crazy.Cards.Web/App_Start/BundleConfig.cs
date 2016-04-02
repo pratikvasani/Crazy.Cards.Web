@@ -16,12 +16,11 @@ namespace Crazy.Cards.Web
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             //            "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/Content/scripts").Include(
+            bundles.Add(new ScriptBundle("~/Scripts/js").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/jquery.js", 
-                      "~/Scripts/cbpAnimatedHeader.js",
-                      "~/Scripts/freelancer.js",
-                      "~/Scripts/classie.js" //,
+                      "~/Scripts/jquery.js"
+                    
+                      //,
                       //"~/Scripts/angular.js",
                       //"~/Scripts/AngularUI/ui-router.min.js",
                       //"~/Angular/Module/crazyCards.js",
@@ -29,7 +28,13 @@ namespace Crazy.Cards.Web
                       //"~/Angular/Controllers/offersController.js" 
 
                       ));
-
+            bundles.Add(new ScriptBundle("~/Scripts/freelancer")
+                .Include(
+                "~/Scripts/classie.js",
+                  "~/Scripts/cbpAnimatedHeader.js",
+                      "~/Scripts/freelancer.js"
+                      
+                ));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/freelancer.css",
