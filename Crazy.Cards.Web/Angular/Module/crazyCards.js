@@ -1,4 +1,4 @@
-﻿var app = angular.module("crazyCards", ['ui.router']);
+﻿var app = angular.module("crazyCards", ['ui.router', 'angular-loading-bar']);
 
 app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/Home");

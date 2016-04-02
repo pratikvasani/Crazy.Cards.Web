@@ -224,6 +224,7 @@
     <Content Include="Angular\Controllers\cardsController.js" />
     <Content Include="Angular\Controllers\offersController.js" />
     <Content Include="Angular\Module\crazyCards.js" />
+    <Content Include="Angular\Module\loading-bar.min.js" />
     <Content Include="Angular\Views\About.html" />
     <Content Include="Angular\Views\Cards.html" />
     <Content Include="Angular\Views\Home.html" />
@@ -232,6 +233,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\freelancer.css" />
+    <Content Include="Content\loading-bar.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
