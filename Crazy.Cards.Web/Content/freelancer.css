@@ -506,3 +506,6 @@ footer {
     .fa-6 {
   font-size: 20em !important;
 }
+.card-image{
+    width:150px;
+}
