@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Crazy.Cards.Core.Models
+namespace Crazy.Cards.Core.DomainModels
 {
     public class CardEligibility
     {

@@ -1,5 +1,5 @@
 ﻿using Crazy.Cards.Core.Enumerations;
-using Crazy.Cards.Core.Models;
+using Crazy.Cards.Core.DomainModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Crazy.Cards.Core.Enumerations;
-using Crazy.Cards.Core.Models;
+using Crazy.Cards.Core.DomainModels;
 
 namespace Crazy.Cards.Repository
 {

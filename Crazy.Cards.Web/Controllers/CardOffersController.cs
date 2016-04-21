@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Crazy.Cards.Core.Models;
+using Crazy.Cards.Core.DomainModels;
 using Crazy.Cards.Core;
 
 namespace Crazy.Cards.Web.Controllers
@@ -19,12 +19,12 @@ namespace Crazy.Cards.Web.Controllers
             this.repository = repo;
         }
         // GET api/values
+        [HttpPost]
         [Route("api/Offers")]
-        public IEnumerable<OfferViewModel> PostOffers(CustomerViewModel model)
+        public IEnumerable<OfferViewModel> GetOffers(CustomerViewModel model)
         {
             var cardOffers =  repository.GetCards(model.EmploymentStatus, model.AnnualIncome);
             return Map(cardOffers);
-            
 
         }
 

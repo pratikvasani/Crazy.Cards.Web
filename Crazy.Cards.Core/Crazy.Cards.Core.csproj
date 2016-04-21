@@ -43,8 +43,8 @@
     <Compile Include="Enumerations\EmploymentStatus.cs" />
     <Compile Include="Enumerations\Title.cs" />
     <Compile Include="Interfaces\ICardsRepository.cs" />
-    <Compile Include="Models\CardEligibility.cs" />
-    <Compile Include="Models\CreditCard.cs" />
+    <Compile Include="DomainModel\CardEligibility.cs" />
+    <Compile Include="DomainModel\CreditCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
